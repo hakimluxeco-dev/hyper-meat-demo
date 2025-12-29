@@ -56,24 +56,54 @@ function initPWA() {
 
     if (!installBanner || !installBtn) return;
 
-    // 1. Standard (Android/Desktop)
+    // Helper: Check if we should show the banner
+    const shouldShowBanner = () => {
+        const dismissedTime = localStorage.getItem('pwaDismissedTime');
+        if (!dismissedTime) return true;
+
+        const now = Date.now();
+        const oneHour = 60 * 60 * 1000;
+        return (now - parseInt(dismissedTime)) > oneHour;
+    };
+
+    // Helper: Show Banner function
+    const showBanner = () => {
+        if (shouldShowBanner()) {
+            installBanner.style.display = 'flex';
+
+            // Platform detection for text
+            const userAgent = navigator.userAgent.toLowerCase();
+            if (userAgent.includes('android')) {
+                installBtn.innerHTML = '<i class="fab fa-android"></i> Install for Android';
+            } else if (userAgent.includes('windows') || userAgent.includes('mac')) {
+                installBtn.innerHTML = '<i class="fas fa-desktop"></i> Install App';
+            } else if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) {
+                installBtn.innerHTML = '<i class="fab fa-apple"></i> Install App';
+            } else {
+                installBtn.innerHTML = '<i class="fas fa-download"></i> Install App';
+            }
+        }
+    };
+
+    // 1. Capture the install prompt (Android/Desktop)
     window.addEventListener('beforeinstallprompt', (e) => {
         e.preventDefault();
         deferredPrompt = e;
-        installBanner.style.display = 'flex';
-
-        // Optional: Customize text based on platform detection
-        const userAgent = navigator.userAgent.toLowerCase();
-        if (userAgent.includes('android')) {
-            installBtn.innerHTML = '<i class="fab fa-android"></i> Install for Android';
-        } else if (userAgent.includes('windows') || userAgent.includes('mac')) {
-            installBtn.innerHTML = '<i class="fas fa-desktop"></i> Install App';
-        } else {
-            installBtn.innerHTML = '<i class="fas fa-download"></i> Install App';
-        }
+        // Don't show immediately, wait for the timer
     });
 
+    // 2. Trigger Timer (Wait 4s for splash screen)
+    setTimeout(() => {
+        // Only show if not already in standalone mode
+        const isStandalone = window.navigator.standalone || window.matchMedia('(display-mode: standalone)').matches;
+        if (!isStandalone) {
+            showBanner();
+        }
+    }, 4000);
+
+    // 3. Handle Install Click
     installBtn.addEventListener('click', async () => {
+        // If we have the native prompt (Android/Desktop), use it
         if (deferredPrompt) {
             deferredPrompt.prompt();
             const { outcome } = await deferredPrompt.userChoice;
@@ -82,29 +112,17 @@ function initPWA() {
             }
             installBanner.style.display = 'none';
         }
+        // iOS Manual Instructions
+        else if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) {
+            alert('To install on iPhone:\n1. Tap the "Share" button.\n2. Tap "Add to Home Screen".');
+        }
     });
 
-    // 2. iOS Detection & Manual Instructions
-    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-    const isStandalone = window.navigator.standalone || window.matchMedia('(display-mode: standalone)').matches;
-
-    // Only show if iOS and NOT standalone (and banner is hidden)
-    if (isIOS && !isStandalone) {
-        installBanner.style.display = 'flex';
-        installBtn.innerHTML = '<i class="fas fa-share-square"></i> Install App';
-
-        // Custom handler for iOS instructions
-        installBtn.onclick = (e) => {
-            e.preventDefault();
-            e.stopImmediatePropagation();
-            alert('To install on iPhone:\n1. Tap the "Share" button.\n2. Tap "Add to Home Screen".');
-        };
-    }
-
-    // Close Button logic
+    // 4. Handle Close (Dismiss for 1 Hour)
     if (closeBtn) {
         closeBtn.addEventListener('click', () => {
             installBanner.style.display = 'none';
+            localStorage.setItem('pwaDismissedTime', Date.now().toString());
         });
     }
 }
