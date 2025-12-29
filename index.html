@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HYPER MEAT | The Modern Butchery</title>
+    <meta name="description" content="Premium quality cuts for the modern palate. Experience Hyper Meat in Klerksdorp.">
+    <link rel="icon" type="image/x-icon" href="/images/logo.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="manifest" href="/manifest.json">
+</head>
+
+<body>
+    <!-- Install App Banner -->
+    <div id="install-banner"
+        style="display: none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: var(--bg-card); padding: 1rem 2rem; border-radius: 50px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); z-index: 10002; border: 1px solid var(--accent); align-items: center; gap: 1rem; width: 90%; max-width: 400px; justify-content: space-between;">
+        <div style="display: flex; align-items: center; gap: 1rem;">
+            <img src="/images/logo.jpg" style="width: 40px; height: 40px; border-radius: 50%;" alt="App Icon">
+            <div>
+                <h4 style="margin: 0; font-size: 0.9rem; color: var(--text-main);">Install Hyper Meat</h4>
+                <p style="margin: 0; font-size: 0.8rem; color: var(--text-muted);">Get the native app experience</p>
+            </div>
+        </div>
+        <button id="install-btn" class="btn" style="padding: 0.5rem 1rem; font-size: 0.8rem;">Install</button>
+        <button id="close-install"
+            style="background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 1.2rem;">&times;</button>
+    </div>
+
+    <!-- Splash Screen -->
+    <div id="splash-screen">
+        <div class="splash-content">
+            <div class="splash-logo-container">
+                <img src="/images/logo.jpg" alt="Hyper Meat" class="splash-logo">
+            </div>
+            <h1 class="splash-title">Hyper Meat Demo</h1>
+            <p class="splash-subtitle">Created & Powered By <span class="splash-highlight">Mai Business Solutions</span>
+            </p>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header">
+        <a href="#" class="logo">
+            <img src="/images/logo.jpg" alt="Hyper Meat Logo">
+            HYPER<span style="font-weight: 300;">MEAT</span>.
+        </a>
+        <button class="mobile-menu-btn"
+            style="display: none; background: none; border: none; color: var(--text-main); font-size: 1.5rem; cursor: pointer;">
+            <i class="fas fa-bars"></i>
+        </button>
+        <nav class="nav-links">
+            <a href="#specials" class="text-highlight">Specials</a>
+            <a href="#collection">Collection</a>
+            <a href="#heritage">Heritage</a>
+            <a href="#wholesale">Wholesale</a>
+            <a href="#concierge">Contact Us</a>
+            <a href="#features" style="color: var(--accent);">Demo Features</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section class="hero">
+            <div class="hero-bg">
+                <img src="/images/cover.jpg" alt="Premium Meat Background">
+            </div>
+            <div class="hero-content">
+                <span class="hero-tag animate__animated animate__fadeInDown">Est. 1930</span>
+                <h1 class="animate__animated animate__fadeInUp">Purveyors of <br><span class="text-gradient">Unknown
+                        Pleasures</span></h1>
+                <p class="animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
+                    We are not just a butchery. We are the architects of your next culinary masterpiece.
+                    Serving Klerksdorp's most discerning tables.
+                </p>
+                <div class="animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
+                    <a href="#collection" class="btn">Explore The Cut</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Marquee -->
+        <div class="marquee">
+            <div class="marquee-content">
+                <span>PREMIUM CUTS</span>
+                <span>•</span>
+                <span>DRY AGED</span>
+                <span>•</span>
+                <span>WAGYU</span>
+                <span>•</span>
+                <span>FREE RANGE</span>
+                <span>•</span>
+                <span>ARTISAN PREPARATION</span>
+                <span>•</span>
+                <span>PREMIUM CUTS</span>
+                <span>•</span>
+                <span>DRY AGED</span>
+                <span>•</span>
+                <span>WAGYU</span>
+            </div>
+        </div>
+
+        <!-- Specials Section -->
+        <section id="specials" class="showcase" style="background: var(--bg-card); padding-bottom: 5rem;">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Weekly <span class="text-highlight">Specials</span></h2>
+                    <p class="section-subtitle">Limited time offers direct from our counters.</p>
+                </div>
+
+
+                <div class="grid-asym" id="specials-grid">
+                    <!-- Loaded dynamically via main.js -->
+                    <div style="grid-column: span 12; text-align: center; color: var(--text-muted); padding: 2rem;">
+                        Loading specials...
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Collection - Asymmetrical Grid -->
+        <section id="collection" class="showcase">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">The <span class="text-highlight">Collection</span></h2>
+                    <p class="section-subtitle">A curated selection of the finest cuts, prepared with scientific
+                        precision.</p>
+                </div>
+
+                <div class="grid-asym">
+                    <!-- Item 1 (Large) -->
+                    <div class="card card-lg">
+                        <img src="/images/premium_steak.png" alt="Signature T-Bone">
+                        <div class="card-content">
+                            <span>Signature Series</span>
+                            <h3>60-Day Dry Aged T-Bone</h3>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 (Small) -->
+                    <div class="card card-sm">
+                        <img src="/images/lamb_rack.png" alt="Lamb Rack">
+                        <div class="card-content">
+                            <span>Karoo Reserve</span>
+                            <h3>Rack of Lamb</h3>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 (Small) -->
+                    <div class="card card-sm">
+                        <img src="/images/butcher_block.png" alt="Artisan">
+                        <div class="card-content">
+                            <span>The Craft</span>
+                            <h3>Artisan Butchery</h3>
+                        </div>
+                    </div>
+
+                    <!-- Item 4 (Large) -->
+                    <div class="card card-lg" style="background: linear-gradient(45deg, #1e293b, #0f172a);">
+                        <div class="card-content" style="justify-content: center; align-items: flex-start;">
+                            <h3 style="font-size: 3rem; line-height: 1;">Custom <br> <span
+                                    class="text-highlight">Wholesale</span> <br> Solutions</h3>
+                            <p style="margin-bottom: 2rem; color: var(--text-muted);">Partner with us for your
+                                restaurant or event.</p>
+                            <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                                <a href="#concierge" class="btn">Enquire Now</a>
+                                <a href="/whatsapp-demo.html" class="btn"
+                                    style="background: transparent; border: 1px solid #25D366; color: #25D366;">
+                                    <i class="fab fa-whatsapp"></i> WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Heritage Section -->
+        <section id="heritage" class="heritage">
+            <div class="container">
+                <div class="heritage-container">
+                    <div class="heritage-image">
+                        <img src="/images/cover.jpg" alt="Butcher Craft">
+                    </div>
+                    <div class="heritage-content">
+                        <span style="color: var(--primary); letter-spacing: 2px; text-transform: uppercase;">Our
+                            Philosophy</span>
+                        <h2 style="font-size: 3.5rem; margin: 1rem 0 2rem;">Ethics Meets <br>Excellence</h2>
+                        <p style="margin-bottom: 2rem; color: var(--text-muted); font-size: 1.1rem;">
+                            Hyper Meat was born from a desire to elevate the standard of local butchery.
+                            We believe that respect for the animal translates directly to the quality on the plate.
+                        </p>
+
+                        <div class="stat-row">
+                            <div class="stat">
+                                <h4>100%</h4>
+                                <p>Traceable</p>
+                            </div>
+                            <div class="stat">
+                                <h4>28+</h4>
+                                <p>Days Aged</p>
+                            </div>
+                            <div class="stat">
+                                <h4>1930</h4>
+                                <p>Established</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+        <section id="concierge" class="location-section" style="padding: 5rem 0;">
+            <div class="container">
+                <div class="section-header" style="margin-bottom: 4rem;">
+                    <h2 class="section-title">Contact <span class="text-highlight">Us</span></h2>
+                    <p class="section-subtitle">Experience the quality in person or get in touch.</p>
+                </div>
+
+                <div class="contact-grid"
+                    style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;">
+                    <!-- Map Side -->
+                    <div class="map-container">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3556.096773822165!2d26.6625!3d-26.8688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e963e6e8c7c7a3f%3A0x6b8f8f8f8f8f8f8f!2s98%20Margaretha%20Prinsloo%20St%2C%20Klerksdorp%2C%202570%2C%20South%20Africa!5e0!3m2!1sen!2sus!4v1625660000000!5m2!1sen!2sus"
+                            width="100%" height="450" style="border:0; border-radius: var(--radius);" allowfullscreen=""
+                            loading="lazy">
+                        </iframe>
+                        <div style="margin-top: 2rem; color: var(--text-muted);">
+                            <p style="margin-bottom: 0.5rem;"><i class="fas fa-map-marker-alt"
+                                    style="color: var(--accent); width: 25px;"></i> 98 Margaretha Prinsloo St,
+                                Klerksdorp</p>
+                            <p style="margin-bottom: 0.5rem;"><i class="fas fa-phone"
+                                    style="color: var(--accent); width: 25px;"></i> 018 462 2415</p>
+                            <p><i class="fas fa-envelope" style="color: var(--accent); width: 25px;"></i>
+                                info@hypermeat.co.za</p>
+                        </div>
+                    </div>
+
+                    <!-- Form Side -->
+                    <div class="contact-form-wrapper">
+                        <form id="contactForm" class="glass-form">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" required placeholder="Your Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" required placeholder="your@email.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" rows="5" required placeholder="How can we help you?"></textarea>
+                            </div>
+                            <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Demo Features Section (Meta) -->
+    <section id="features" style="padding: 5rem 0; background: #02040a; border-top: 1px solid rgba(255,255,255,0.05);">
+        <div class="container">
+            <div class="section-header" style="margin-bottom: 3rem;">
+                <h2 class="section-title">Website <span class="text-highlight">Capabilities</span></h2>
+                <p class="section-subtitle">Overview of custom features built for this demo.</p>
+            </div>
+
+            <!-- Single Container Layout -->
+            <div class="card"
+                style="max-width: 800px; margin: 0 auto; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(10px);">
+                <div class="card-content" style="padding: 3rem;">
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+
+                        <!-- Feature 1 -->
+                        <li style="margin-bottom: 2.5rem; display: flex; align-items: flex-start; gap: 1.5rem;">
+                            <div
+                                style="background: rgba(56, 189, 248, 0.1); padding: 1rem; border-radius: 12px; min-width: 60px; text-align: center;">
+                                <i class="fas fa-robot" style="font-size: 1.5rem; color: var(--accent);"></i>
+                            </div>
+                            <div>
+                                <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--text-main);">Weekly
+                                    Specials Engine</h3>
+                                <p style="color: var(--text-muted); line-height: 1.6;">
+                                    Automated AI that looks at Facebook for new specials every Friday and automatically
+                                    updates the weekly specials website content.
+                                </p>
+                            </div>
+                        </li>
+
+                        <!-- Feature 2 -->
+                        <li style="margin-bottom: 2.5rem; display: flex; align-items: flex-start; gap: 1.5rem;">
+                            <div
+                                style="background: rgba(56, 189, 248, 0.1); padding: 1rem; border-radius: 12px; min-width: 60px; text-align: center;">
+                                <i class="fab fa-whatsapp" style="font-size: 1.5rem; color: var(--accent);"></i>
+                            </div>
+                            <div>
+                                <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--text-main);">
+                                    Interactive WhatsApp</h3>
+                                <p style="color: var(--text-muted); line-height: 1.6;">
+                                    Custom floating button with animated "Chat / Order" labels and a special "Whatsapp
+                                    AI Bot" for client interactions.
+                                </p>
+                            </div>
+                        </li>
+
+                        <!-- Feature 3 -->
+                        <li style="margin-bottom: 2.5rem; display: flex; align-items: flex-start; gap: 1.5rem;">
+                            <div
+                                style="background: rgba(56, 189, 248, 0.1); padding: 1rem; border-radius: 12px; min-width: 60px; text-align: center;">
+                                <i class="fas fa-magic" style="font-size: 1.5rem; color: var(--accent);"></i>
+                            </div>
+                            <div>
+                                <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--text-main);">Premium
+                                    UX Design</h3>
+                                <p style="color: var(--text-muted); line-height: 1.6;">
+                                    Modern Glassmorphism aesthetic, Parallax scrolling effects, custom Lightbox image
+                                    viewer, and smooth entry animations for a polished feel.
+                                </p>
+                            </div>
+                        </li>
+
+                        <!-- Feature 4 -->
+                        <li style="display: flex; align-items: flex-start; gap: 1.5rem;">
+                            <div
+                                style="background: rgba(56, 189, 248, 0.1); padding: 1rem; border-radius: 12px; min-width: 60px; text-align: center;">
+                                <i class="fas fa-address-book" style="font-size: 1.5rem; color: var(--accent);"></i>
+                            </div>
+                            <div>
+                                <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--text-main);">
+                                    Integrated Contact</h3>
+                                <p style="color: var(--text-muted); line-height: 1.6;">
+                                    Functional glass-styled contact form with simulated submission feedback, integrated
+                                    directly with live Google Maps.
+                                </p>
+                            </div>
+                        </li>
+
+                        <!-- Feature 5 -->
+                        <li style="display: flex; align-items: flex-start; gap: 1.5rem; margin-top: 2.5rem;">
+                            <div
+                                style="background: rgba(56, 189, 248, 0.1); padding: 1rem; border-radius: 12px; min-width: 60px; text-align: center;">
+                                <i class="fas fa-mobile-alt" style="font-size: 1.5rem; color: var(--accent);"></i>
+                            </div>
+                            <div>
+                                <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--text-main);">Native
+                                    App Experience</h3>
+                                <p style="color: var(--text-muted); line-height: 1.6;">
+                                    Full Progressive Web App (PWA) support allowing users to install the website as a
+                                    native app on their home screen, complete with offline capabilities.
+                                </p>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h2>HYPER<span style="color: var(--primary);">MEAT</span>.</h2>
+                    <p style="max-width: 300px; color: var(--text-muted);">
+                        Redefining the art of butchery for the modern era.
+                        <br><br>
+                        Klerksdorp, South Africa
+                    </p>
+                </div>
+                <div class="footer-links">
+                    <h3>Explore</h3>
+                    <ul>
+                        <li><a href="#collection">The Collection</a></li>
+                        <li><a href="#heritage">Heritage</a></li>
+                        <li><a href="#wholesale">Wholesale</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Connect</h3>
+                    <ul>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Email Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div
+                style="text-align: center; color: rgba(255,255,255,0.2); font-size: 0.8rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); display: flex; flex-direction: column; gap: 0.5rem; align-items: center;">
+                <span>&copy; 2025 HYPER MEAT HOLDINGS. ALL RIGHTS RESERVED.</span>
+                <span>Created & Powered By <a href="https://www.maisolutions.co.za" target="_blank"
+                        style="color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.3s;"
+                        onmouseover="this.style.color='var(--accent)'"
+                        onmouseout="this.style.color='rgba(255,255,255,0.4)'">Mai Business Solutions</a></span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Integration -->
+    <a href="/whatsapp-demo.html" class="whatsapp-float" target="_blank">
+        <span class="whatsapp-text">
+            <span>Chat with Us</span>
+            <span>Order On WhatsApp</span>
+        </span>
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+        <div id="lightbox-caption"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>

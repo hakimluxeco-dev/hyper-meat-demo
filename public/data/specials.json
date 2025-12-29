@@ -1,0 +1,17 @@
+[
+    {
+        "title": "Hyper Saver",
+        "subtitle": "Weekly Deal",
+        "image": "/images/special1.jpg"
+    },
+    {
+        "title": "Black Friday Ext",
+        "subtitle": "Limited Time",
+        "image": "/images/special2.jpg"
+    },
+    {
+        "title": "Hamper Special",
+        "subtitle": "Bulk Buy",
+        "image": "/images/special3.jpg"
+    }
+]
