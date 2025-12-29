@@ -615,14 +615,24 @@ footer {
     /* Fix card sizing on mobile */
     .card-lg,
     .card-sm {
-        aspect-ratio: auto;
-        /* Allow growth */
-        min-height: 300px;
+        aspect-ratio: auto !important;
+        height: auto !important;
+        /* Force auto height */
+        min-height: 350px;
+        /* Ensure minimum height */
+        padding: 2rem 1.5rem;
+        /* Ensure padding */
+    }
+
+    .card h3 {
+        font-size: 1.5rem;
+        /* Smaller titles on mobile to prevent overlap */
     }
 
     .wholesale-title {
         font-size: 2rem !important;
-        /* Smaller on mobile */
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
     }
 }
 
