@@ -679,7 +679,7 @@ footer {
 
     /* Faster Marquee on Mobile */
     .marquee-content {
-        animation-duration: 10s !important;
+        animation-duration: 7s !important;
     }
 }
 
