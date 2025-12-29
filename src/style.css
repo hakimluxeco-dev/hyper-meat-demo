@@ -611,6 +611,24 @@ footer {
         /* moved up to avoid banner overlap if needed */
         right: 20px;
     }
+
+    /* Fix card sizing on mobile */
+    .card-lg,
+    .card-sm {
+        aspect-ratio: auto;
+        /* Allow growth */
+        min-height: 300px;
+    }
+
+    .wholesale-title {
+        font-size: 2rem !important;
+        /* Smaller on mobile */
+    }
+}
+
+/* Default Wholesale Title (Desktop) */
+.wholesale-title {
+    font-size: 3rem;
 }
 
 /* Map Section */
