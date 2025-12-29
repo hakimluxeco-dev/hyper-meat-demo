@@ -154,12 +154,14 @@ async function initSpecials() {
 
         specials.forEach(special => {
             const card = document.createElement('div');
-            card.className = 'card card-sm animate__animated'; // Add animation class for scroll observer
+            card.className = 'card card-sm flyer-card animate__animated'; // Added flyer-card class
             card.style.visibility = 'hidden'; // Hide initially for scroll observer
 
             // Make image clickable
             card.innerHTML = `
-                <img src="${special.image}" alt="${special.title}" style="cursor: pointer;">
+                <div class="flyer-image-container">
+                    <img src="${special.image}" alt="${special.title}" style="cursor: pointer;">
+                </div>
                 <div class="card-content">
                     <span>${special.subtitle}</span>
                     <h3>${special.title}</h3>

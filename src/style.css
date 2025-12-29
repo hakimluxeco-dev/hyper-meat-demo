@@ -403,6 +403,48 @@ img {
     letter-spacing: 1px;
 }
 
+/* Flyer Card Styles (Specials) */
+.card.flyer-card {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    aspect-ratio: auto;
+    min-height: auto;
+}
+
+.flyer-image-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4/5;
+    /* Keep vertical aspect for flyer */
+    overflow: hidden;
+}
+
+.flyer-image-container img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    /* Show full image brightness */
+    transition: 0.6s ease;
+}
+
+.card.flyer-card:hover .flyer-image-container img {
+    transform: scale(1.05);
+    opacity: 1;
+    /* Keep bright on hover */
+}
+
+.card.flyer-card .card-content {
+    position: relative;
+    padding: 1.5rem;
+    background: var(--bg-card);
+    border-top: 1px solid var(--border-color);
+    flex: 1;
+}
+
+
 /* Marquee / Divider */
 .marquee {
     padding: 2rem 0;
@@ -633,6 +675,11 @@ footer {
         font-size: 2rem !important;
         margin-top: 1rem;
         margin-bottom: 0.5rem;
+    }
+
+    /* Faster Marquee on Mobile */
+    .marquee-content {
+        animation-duration: 10s !important;
     }
 }
 
