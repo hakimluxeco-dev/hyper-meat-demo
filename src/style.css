@@ -498,14 +498,29 @@ img {
     position: relative;
 }
 
+@keyframes colorPulse {
+    0% {
+        filter: grayscale(100%);
+    }
+
+    50% {
+        filter: grayscale(0%);
+    }
+
+    100% {
+        filter: grayscale(100%);
+    }
+}
+
 .heritage-image img {
     border-radius: var(--radius);
-    filter: saturate(0) contrast(1.2);
-    transition: 0.4s;
+    animation: colorPulse 4s ease-in-out infinite;
 }
 
 .heritage-image:hover img {
-    filter: saturate(1) contrast(1);
+    filter: grayscale(0%) !important;
+    animation: none;
+    /* Pause/Stop pulsing on hover if desired, or just force color */
 }
 
 .stat-row {
