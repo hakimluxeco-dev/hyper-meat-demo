@@ -61,6 +61,16 @@ function initPWA() {
         e.preventDefault();
         deferredPrompt = e;
         installBanner.style.display = 'flex';
+
+        // Optional: Customize text based on platform detection
+        const userAgent = navigator.userAgent.toLowerCase();
+        if (userAgent.includes('android')) {
+            installBtn.innerHTML = '<i class="fab fa-android"></i> Install for Android';
+        } else if (userAgent.includes('windows') || userAgent.includes('mac')) {
+            installBtn.innerHTML = '<i class="fas fa-desktop"></i> Install App';
+        } else {
+            installBtn.innerHTML = '<i class="fas fa-download"></i> Install App';
+        }
     });
 
     installBtn.addEventListener('click', async () => {
