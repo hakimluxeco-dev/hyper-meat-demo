@@ -48,31 +48,50 @@ function initPWA() {
             .then(() => console.log('Service Worker Registered'));
     }
 
-    // Install Prompt
+    // Install Prompt Logic
     let deferredPrompt;
     const installBanner = document.getElementById('install-banner');
     const installBtn = document.getElementById('install-btn');
     const closeBtn = document.getElementById('close-install');
 
+    if (!installBanner || !installBtn) return;
+
+    // 1. Standard (Android/Desktop)
     window.addEventListener('beforeinstallprompt', (e) => {
         e.preventDefault();
         deferredPrompt = e;
-        installBanner.style.display = 'flex'; // Show banner
+        installBanner.style.display = 'flex';
     });
 
-    if (installBtn) {
-        installBtn.addEventListener('click', async () => {
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                const { outcome } = await deferredPrompt.userChoice;
-                if (outcome === 'accepted') {
-                    deferredPrompt = null;
-                }
-                installBanner.style.display = 'none';
+    installBtn.addEventListener('click', async () => {
+        if (deferredPrompt) {
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            if (outcome === 'accepted') {
+                deferredPrompt = null;
             }
-        });
+            installBanner.style.display = 'none';
+        }
+    });
+
+    // 2. iOS Detection & Manual Instructions
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    const isStandalone = window.navigator.standalone || window.matchMedia('(display-mode: standalone)').matches;
+
+    // Only show if iOS and NOT standalone (and banner is hidden)
+    if (isIOS && !isStandalone) {
+        installBanner.style.display = 'flex';
+        installBtn.innerHTML = '<i class="fas fa-share-square"></i> Install App';
+
+        // Custom handler for iOS instructions
+        installBtn.onclick = (e) => {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            alert('To install on iPhone:\n1. Tap the "Share" button.\n2. Tap "Add to Home Screen".');
+        };
     }
 
+    // Close Button logic
     if (closeBtn) {
         closeBtn.addEventListener('click', () => {
             installBanner.style.display = 'none';
