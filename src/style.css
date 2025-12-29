@@ -498,29 +498,20 @@ img {
     position: relative;
 }
 
-@keyframes colorPulse {
-    0% {
-        filter: grayscale(100%);
-    }
-
-    50% {
-        filter: grayscale(0%);
-    }
-
-    100% {
-        filter: grayscale(100%);
-    }
-}
-
 .heritage-image img {
     border-radius: var(--radius);
-    animation: colorPulse 4s ease-in-out infinite;
+    filter: grayscale(100%);
+    transition: filter 2s ease-out;
+    /* Slow fade */
+    will-change: filter;
+}
+
+.heritage-image img.reveal-color {
+    filter: grayscale(0%);
 }
 
 .heritage-image:hover img {
-    filter: grayscale(0%) !important;
-    animation: none;
-    /* Pause/Stop pulsing on hover if desired, or just force color */
+    filter: grayscale(0%);
 }
 
 .stat-row {

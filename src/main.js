@@ -271,6 +271,26 @@ function initScrollAnimations() {
         el.classList.add('animate__animated'); // base class
         observer.observe(el);
     });
+
+    // Special Observer for Heritage Image (Grayscale -> Color)
+    const heritageImg = document.querySelector('.heritage-image img');
+    if (heritageImg) {
+        // Ensure starting state
+        heritageImg.classList.remove('reveal-color');
+
+        const imgObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Add class to trigger CSS transition
+                    entry.target.classList.add('reveal-color');
+                    console.log('Heritage image revealed!'); // Debug
+                    imgObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.25 }); // Trigger when 25% visible
+
+        imgObserver.observe(heritageImg);
+    }
 }
 
 function initNavbar() {
