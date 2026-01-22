@@ -1,17 +1,17 @@
 [
     {
-        "title": "Hyper Saver",
-        "subtitle": "Weekly Deal",
+        "title": "Weekly Special",
+        "subtitle": "Limited Offer",
         "image": "/images/special1.jpg"
     },
     {
-        "title": "Black Friday Ext",
-        "subtitle": "Limited Time",
+        "title": "Fresh Cut",
+        "subtitle": "Butcher's Choice",
         "image": "/images/special2.jpg"
     },
     {
-        "title": "Hamper Special",
-        "subtitle": "Bulk Buy",
+        "title": "Deal of the Week",
+        "subtitle": "Don't Miss Out",
         "image": "/images/special3.jpg"
     }
 ]
