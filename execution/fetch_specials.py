@@ -44,8 +44,9 @@ def extract_image_urls(html_content):
     
     candidates = re.findall(r'(https:\/\/scontent[^\s"\']+\.jpg[^\s"\']*)', html_content)
     
-    # Filter for high quality (often marked with s720x720 or similar, but let's just take unique ones)
-    unique_candidates = list(set(candidates))
+    # Filter for high quality, BUT preserve order to ensure we get the LATEST posts (top of page).
+    # set() destroys order, so we use dict.fromkeys() which preserves insertion order in Python 3.7+
+    unique_candidates = list(dict.fromkeys(candidates))
     
     # We want valid-looking ones.
     # On FB, the main post images usually don't have too many weird sizing parameters in the raw html
