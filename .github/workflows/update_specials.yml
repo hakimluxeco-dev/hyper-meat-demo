@@ -2,33 +2,36 @@ name: Update Weekly Specials
 
 on:
   schedule:
-    # Run at 09:00 UTC every Friday
-    - cron: '0 9 * * 5'
-  workflow_dispatch: # Allow manual trigger
+    # Run at 08:00 on Friday
+    - cron: '0 8 * * 5'
+  workflow_dispatch:
 
 jobs:
   update-specials:
     runs-on: ubuntu-latest
-    
+    permissions:
+      contents: write
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-        
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.9'
-          
-      - name: Install Dependencies
-        run: |
-          pip install requests
-          
-      - name: Run Scraper
-        run: python execution/fetch_specials.py
-        
-      - name: Commit and Push changes
-        run: |
-          git config --global user.name 'GitHub Action'
-          git config --global user.email 'action@github.com'
-          git add public/images/*.jpg public/data/specials.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update weekly specials" && git push)
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install requests
+
+    - name: Run Fetch Specials Script
+      run: python execution/fetch_specials.py
+
+    - name: Commit and push changes
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+        git add public/data/specials.json public/images/special*.jpg
+        git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update weekly specials [skip ci]" && git push)
